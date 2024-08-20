@@ -1,0 +1,497 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .bo {
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            background-color: #f4f4f4;
+            margin-left: 200px;
+            margin-right: 200px;
+        }
+
+
+        .container {
+            display: grid;
+            grid-template-columns: auto auto auto auto auto auto auto auto;
+            grid-gap: 10px;
+            margin-left: 20px;
+            padding: 10px;
+            margin-bottom: 5px;
+        }
+
+        .item1 {
+            grid-column: 1/ span 2;
+        }
+
+        .itemfull {
+            grid-column: 1/ span 8;
+        }
+
+        .item2 {
+            grid-column: 3 / span 8;
+        }
+
+        .item3 {
+            grid-column: 3/ span 2;
+        }
+
+        .item3f {
+            grid-column: 3/ span 5;
+        }
+
+        .item4 {
+            grid-column: 3/ span 8;
+        }
+
+        .item32 {
+            grid-column: 6/ span 5;
+        }
+
+        input[type="text"], input[type="email"], textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 20px;
+            box-sizing: border-box;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .header {
+            background-color: #34315c;
+            color: #fff;
+            padding: 30px 30px;
+            display: flex;
+            gap: 1000px;
+        }
+
+        .h {
+            background-color: #fff;
+            padding: 20px 0;
+        }
+
+        .header img {
+            max-width: 1500px;
+            max-height: 1000px;
+            margin-left: 30px;
+        }
+
+        .footer {
+            background-color: #34315c;
+            padding: 20px 0;
+        }
+
+        .smallhidden {
+            visibility: hidden;
+        }
+
+        .smallshown {
+            visibility: visible;
+            color: red;
+        }
+
+        .inputError {
+            border: 2px solid #16ac29;
+        }
+
+        .inputValid {
+            border: 2px solid #16ac29;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body class="bo">
+    <div class="h">
+        <p> </p>
+    </div>
+    <header class="header">
+        <div style="text-align: left;">
+            <br />
+            <img src="pic2.jpeg" alt="Harmony Society Logo"><br />
+            <h2>Harmony</h2>
+            <h3 style="margin-left:20px;">Society</h3>
+        </div>
+
+
+        <div style="text-align: right;">
+            <a href="tel:+12107888829" style="color: white;">
+                <i class="fas fa-phone-alt"></i> 210-788-8829
+            </a>
+
+            <h3>
+                <i class="fas fa-envelope"></i> harmonysociety@mail.com
+            </h3>
+
+            <h3>
+                <i class="fas fa-globe"></i>
+                <a href="http://www.harmonysociety.com" style="color: white;">www.harmonysociety.com</a>
+            </h3>
+        </div>
+
+    </header>
+    <h1 style="margin-left:20px;">Register for Membership</h1>
+    <form>
+        <div class="container">
+            <div class="item1">
+                <h2 style="background-color: #edb123; font-color: #34315c;">Personal Information</h2>
+            </div>
+            <div class="item1">
+                <label for="full-name">Full Name:</label>
+            </div>
+            <div class="item2">
+                <input type="text" id="full-name" name="full-name" onfocusout="Checkname()">
+            </div>
+
+            <div class="item1">
+                <label for="address">Address:</label>
+            </div>
+            <div class="item2">
+                <input type="text" id="address" name="address" onfocusout="CheckAddress()">
+            </div>
+            <div class="item1">
+                <label for="date">Date of Birth:</label>
+            </div>
+            <div class="item2">
+                <input type="date" id="date" name="date">
+                <div id="message" class="error-message"></div>
+            </div>
+            <div class="item32">
+                <label for="gender">Gender:</label>
+                <!--</div>
+                <div class="item11">-->
+                <input type="radio" id="male" name="gender" value="Male" style="width: 30px; height: 30px;">
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="Female" style="width: 30px; height: 30px;">
+                <label for="female">Female</label>
+
+                <div id="gender-error" style="color: red; display: none; margin-top: 5px;"></div>
+            </div>
+
+            <div class="item1">
+                <label for="phone-number">Phone Number:</label>
+            </div>
+            <div class="item3">
+                <input type="text" id="phone-number" name="phone-number" onfocusout="CheckPhoneNumber()">
+            </div>
+
+            <div class="item11">
+                <label for="email">E-mail:</label>
+            </div>
+            <div class="item32">
+                <input type="email" id="email" name="email" onfocusout="CheckEmail()">
+            </div>
+        </div>
+        <div class="container">
+
+            <h2 style="background-color: #edb123; font-color: #34315c;">Membership Information</h2>
+            <div class="item1">
+                <input type="checkbox" id="individual-membership" name="membership" value="individual-membership" onfocusout="CheckMembershipValidation()" style="width: 30px; height: 30px;">
+                <label for="individual-membership">Individual Membership</label>
+            </div>
+            <div class="item2">
+                <input type="checkbox" id="Student Membership(Attach valid Student ID)" name="membership" value="Student Membership(Attach valid Student ID)" onfocusout="CheckMembershipValidation()" style="width: 30px; height: 30px;">
+                <label for="Student Membership(Attach valid Student ID)">Student Membership(Attach valid Student ID)</label>
+
+            </div>
+            <div class="item1">
+                <input type="checkbox" id="family-membership" name="membership" value="family-membership" onfocusout="CheckMembershipValidation()" style="width: 30px; height: 30px;">
+                <label for="family-membership">Family Membership</label>
+            </div>
+            <div class="item2">
+                <input type="checkbox" id="senior-citizen-membership" name="membership" value="senior-citizen-membership" onfocusout="CheckMembershipValidation()" style="width: 30px; height: 30px;">
+                <label for="senior-citizen-membership">Senior Citizen Membership</label>
+            </div>
+            <div id="error-message" style="color: red; display: none; margin-top: 10px;"></div>
+
+        </div>
+
+
+
+        <div class="container">
+
+            <h2 style="background-color: #edb123; font-color: #34315c;">Emergency Contact</h2>
+            <div class="item1">
+                <label for="full-name">Full Name:</label>
+            </div>
+            <div class="item2">
+                <input type="text" id="full-nameE" name="full-nameE" onfocusout="ChecknameE()">
+                <div id="name-error" style="color: red; display: none; margin-top: 5px;"></div>
+                <!--//////
+                <input type="text" id="full-name" name="full-nameE" onfocusout="ChecknameE()">
+                <div id="name-error" style="color: red; display: none; margin-top: 5px;"></div>-->
+            </div>
+            <div class="item1">
+                <label for="phone-number">Phone Number:</label>
+
+            </div>
+            <div class="item3">
+                <input type="text" id="phone-numberE" name="phone-numberE" onfocusout="CheckPhoneNumberE()">
+                <div id="phone-error" style="color: red; display: none; margin-top: 5px;"></div>
+                <!--///////
+                <input type="text" id="phone-number" name="phone-numberE" onfocusout="CheckPhoneNumberE()">
+                <div id="phone-error" style="color: red; display: none; margin-top: 5px;"></div>-->
+            </div>
+            <div class="item11">
+                <label for="email">E-mail:</label>
+            </div>
+            <div class="item32">
+                <input type="email" id="emailE" name="emailE" onfocusout="CheckEmailE()">
+                <div id="email-error" style="color: red; display: none; margin-top: 5px;"></div>
+                <!--/////
+                <input type="email" id="email" name="emailE" onfocusout="CheckEmailE()">
+                <div id="email-error" style="color: red; display: none; margin-top: 5px;"></div>-->
+            </div>
+        </div>
+
+
+        <div class="container">
+            <div class="item1">
+                <h2 style="background-color: #edb123; font-color: #34315c;">Additional Information</h2>
+            </div>
+
+            <div class="itemfull">
+                <label for="additional-info">Please indicate any specific interests, skills, or areas of expertise you would like to contribute to the organization:</label>
+                <textarea id="additional-info" name="additional-info" rows="8"></textarea>
+            </div>
+            <div class="item1">
+                <button type="button" id="submit" onclick="Checkvalidation()" style="background-color: #edb123; color:#ff6a00; padding:10px;width:90%">Submit</button>
+            </div>
+            <!--<div id="message" class="error-message"></div>-->
+        </div>
+    </form>
+    <footer class="footer">
+    </footer>
+
+    <script>
+        function Checkname() {
+            var IsName = /^[a-zA-Z\s]+$/;
+            let nameinput = document.getElementById("full-name");
+            if (nameinput.value.trim() === "") {
+                setError(nameinput, "Enter full Name");
+            } else if (!IsName.test(nameinput.value.trim())) {
+                setError(nameinput, "Name cannot contain numbers or special characters");
+            } else {
+                setSuccess(nameinput);
+            }
+        }
+        function CheckAddress() {
+            let addressInput = document.getElementById("address");
+            if (addressInput.value.trim() === "") {
+                setError(addressInput, "Enter your address");
+            } else {
+                setSuccess(addressInput);
+            }
+        }
+        function CheckDateOfBirth() {
+            const dobInput = document.getElementById("date");
+            const message = document.getElementById("message");
+            const dob = new Date(dobInput.value);
+            const today = new Date();
+
+            const age = today.getFullYear() - dob.getFullYear();
+            const monthDiff = today.getMonth() - dob.getMonth();
+            const dayDiff = today.getDate() - dob.getDate();
+
+            if (!dobInput.value) {
+                message.textContent = "Please enter your date of birth.";
+                return false;
+            }
+
+            if (dob > today) {
+                message.textContent = "Date of Birth cannot be in the future.";
+                dobInput.value = "";
+                return false;
+            } else if (age < 18 || (age === 18 && (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)))) {
+                message.textContent = "You must be at least 18 years old.";
+                dobInput.value = "";
+                return false;
+            }
+
+            message.textContent = ""; // Clear any previous error messages
+            return true;
+        }
+        function CheckGender() {
+            const genderError = document.getElementById("gender-error");
+            const maleRadio = document.getElementById("male");
+            const femaleRadio = document.getElementById("female");
+
+            if (!maleRadio.checked && !femaleRadio.checked) {
+                genderError.innerText = "Please select a gender.";
+                genderError.style.display = "block";
+            } else {
+                genderError.style.display = "none";
+            }
+        }
+
+
+        function CheckPhoneNumber() {
+            var IsPhoneNumber = /^[6789][0-9]{9}$/;
+            let phoneInput = document.getElementById("phone-number");
+
+            if (phoneInput.value.trim() === "") {
+                setError(phoneInput, "Enter your phone number");
+            } else if (!IsPhoneNumber.test(phoneInput.value.trim())) {
+                setError(phoneInput, "Phone number must be 10 digits and start with 6, 7, 8, or 9");
+            } else {
+                setSuccess(phoneInput);
+            }
+            //var IsPhoneNumber = /^[0-9]{10}$/;
+            //let phoneInput = document.getElementById("phone-number");
+            //if (phoneInput.value.trim() === "") {
+            //    setError(phoneInput, "Enter your phone number");
+            //} else if (!IsPhoneNumber.test(phoneInput.value.trim())) {
+            //    setError(phoneInput, "Phone number must be 10 digits");
+            //} else {
+            //    setSuccess(phoneInput);
+            //}
+        }
+        function CheckEmail() {
+            var IsEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            let emailInput = document.getElementById("email");
+            if (emailInput.value.trim() === "") {
+                setError(emailInput, "Enter your email");
+            } else if (!IsEmail.test(emailInput.value.trim())) {
+                setError(emailInput, "Enter a valid email address");
+            } else {
+                setSuccess(emailInput);
+            }
+        }
+
+
+
+        function CheckMembershipValidation() {
+            const checkboxes = document.querySelectorAll('input[name="membership"]');
+            let isChecked = false;
+            let errorMessage = document.getElementById("error-message");
+
+            checkboxes.forEach((checkbox) => {
+                if (checkbox.checked) {
+                    isChecked = true;
+                }
+            });
+
+            if (!isChecked) {
+                errorMessage.innerText = "Please select at least one membership option.";
+                errorMessage.style.display = "block";
+            } else {
+                errorMessage.style.display = "none";
+                // Proceed with form submission or further validation
+                //alert("Membership information is valid."); // This alert can be replaced with actual form submission logic
+            }
+        }
+        function ChecknameE() {
+            const nameInput = document.getElementById("full-nameE");
+            const nameError = document.getElementById("name-error");
+            const namePattern = /^[a-zA-Z\s]+$/;
+
+            if (nameInput.value.trim() === "") {
+                nameError.innerText = "Full Name is required.";
+                nameError.style.display = "block";
+            } else if (!namePattern.test(nameInput.value.trim())) {
+                nameError.innerText = "Full Name can only contain letters and spaces.";
+                nameError.style.display = "block";
+            } else {
+                nameError.style.display = "none";
+            }
+        }
+
+        function CheckPhoneNumberE() {
+            const phoneInput = document.getElementById("phone-numberE");
+            const phoneError = document.getElementById("phone-error");
+            const phonePattern = /^\d{10}$/;
+
+            if (phoneInput.value.trim() === "") {
+                phoneError.innerText = "Phone Number is required.";
+                phoneError.style.display = "block";
+            } else if (!phonePattern.test(phoneInput.value.trim())) {
+                phoneError.innerText = "Phone Number must be a 10-digit number.";
+                phoneError.style.display = "block";
+            } else {
+                phoneError.style.display = "none";
+            }
+        }
+
+        function CheckEmailE() {
+            const emailInput = document.getElementById("emailE");
+            const emailError = document.getElementById("email-error");
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (emailInput.value.trim() === "") {
+                emailError.innerText = "E-mail is required.";
+                emailError.style.display = "block";
+            } else if (!emailPattern.test(emailInput.value.trim())) {
+                emailError.innerText = "Enter a valid e-mail address.";
+                emailError.style.display = "block";
+            } else {
+                emailError.style.display = "none";
+            }
+        }
+
+
+
+
+
+
+
+
+        function setError(input, message) {
+            let submitbutton = document.getElementById("submit");
+            const formControl = input.parentElement;
+            let small = formControl.querySelector("small");
+
+            if (!small) {
+                small = document.createElement("small");
+                formControl.appendChild(small);
+            }
+
+            small.className = "smallshown";
+            small.innerText = message;
+            submitbutton.disabled = true;
+        }
+
+        function setSuccess(input) {
+            let submitbutton = document.getElementById("submit");
+            const formControl = input.parentElement;
+            let small = formControl.querySelector("small");
+
+            if (small) {
+                small.className = "smallhidden";
+                small.innerText = "";
+            }
+
+            submitbutton.disabled = false;
+        }
+
+        function Checkvalidation() {
+            Checkname();
+            CheckAddress();
+            CheckDateOfBirth();
+            CheckGender();
+
+            CheckPhoneNumber();
+            CheckEmail();
+
+            CheckMembershipValidation();
+            ChecknameE();
+            CheckPhoneNumberE();
+            CheckEmailE();
+            //const message = document.getElementById("message");
+            //if (CheckDateOfBirth()) {
+            //    message.className = "success-message";
+            //    message.textContent = "Form submitted successfully.";
+            //    // Form submission code can go here
+            //} else {
+            //    message.className = "error-message";
+            //    message.textContent = "Please correct the errors before submitting the form.";
+            //}
+        }
+    </script>
+</body>
+</html>
